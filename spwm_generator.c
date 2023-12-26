@@ -256,13 +256,19 @@ flash int datax[256]={
 125,
 }
 int data[256];
-int i,j,k;
+int i,j,k,l;
 
 void setup()
 {
 	i=0;
 	j=42;
 	k=85;
+	for(l=0;l<256;l++) data[l]=datax[l];
+}
+
+void attenuator(float atten)
+{
+	for(l=0;l<256;l++) data[l]=atten*datax[l]; //atten from 0.05 to 1.0
 }
 
 void sine_funct()
