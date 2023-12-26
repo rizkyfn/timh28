@@ -261,11 +261,11 @@ int i,j,k,l,m,n,o;
 void setup()
 {
 	i=0;
-	j=42;
-	k=85;
+	j=85;
+	k=170;
 	m=128;
-	n=170;
-	o=213;
+	n=213;
+	o=43;
 	for(l=0;l<255;l++) data[l]=datax[l];
 }
 
