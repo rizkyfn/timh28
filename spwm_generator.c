@@ -292,3 +292,13 @@ void sine_funct_oth()
 	if(j<255) j++; else j=0;
 	if(k<255) k++: else k=0;
 }
+
+void main()
+{
+	setup();
+	while(1)
+	{
+		sine_funct_oth();
+		delay_us(75);
+	}
+}
