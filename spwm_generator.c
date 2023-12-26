@@ -305,9 +305,9 @@ void sine_funct_oth_2()
 	if(i<254) i++; else i=0;
 	if(j<254) j++; else j=0;
 	if(k<254) k++: else k=0;
-	if(m<254) i++; else i=0;
-	if(n<254) j++; else j=0;
-	if(o<254) k++: else k=0;
+	if(m<254) m++; else m=0;
+	if(n<254) n++; else n=0;
+	if(o<254) o++: else o=0;
 }
 void main()
 {
@@ -315,6 +315,6 @@ void main()
 	while(1)
 	{
 		sine_funct_oth();
-		delay_us(75);
+		delay_us(75); //change frequencies from 75us to 7.5ms (50Hz to 0.5Hz)
 	}
 }
