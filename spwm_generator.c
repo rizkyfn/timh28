@@ -255,20 +255,23 @@ flash int datax[256]={
 121,
 125,
 }
-int data[256];
-int i,j,k,l;
+int data[255];
+int i,j,k,l,m,n,o;
 
 void setup()
 {
 	i=0;
 	j=42;
 	k=85;
-	for(l=0;l<256;l++) data[l]=datax[l];
+	m=128;
+	n=170;
+	o=213;
+	for(l=0;l<255;l++) data[l]=datax[l];
 }
 
 void attenuator(float atten)
 {
-	for(l=0;l<256;l++) data[l]=atten*datax[l]; //atten from 0.05 to 1.0
+	for(l=0;l<255;l++) data[l]=atten*datax[l]; //atten from 0.05 to 1.0
 }
 
 void sine_funct()
@@ -277,22 +280,35 @@ void sine_funct()
 	if(data[j]<0) {OCR1B=-data[j];OCR1A=0;} else {OCR1A=data[j];OCR1B=0;} //S phase
 	if(data[k]<0) {OCR2B=-data[k];OCR2A=0;} else {OCR2A=data[k];OCR2B=0;} //T phase
 	
-	if(i<255) i++; else i=0;
-	if(j<255) j++; else j=0;
-	if(k<255) k++: else k=0;
+	if(i<254) i++; else i=0;
+	if(j<254) j++; else j=0;
+	if(k<254) k++: else k=0;
 }
 
 void sine_funct_oth()
 {
 	OCR0A=data[i]; OCR0B=255-OCR0A; //R phase
-	OCR1A=data[j]; OCR1B=255-OCR1A; //R phase
-	OCR2A=data[k]; OCR2B=255-OCR2A; //R phase
+	OCR1A=data[j]; OCR1B=255-OCR1A; //S phase
+	OCR2A=data[k]; OCR2B=255-OCR2A; //T phase
 	
-	if(i<255) i++; else i=0;
-	if(j<255) j++; else j=0;
-	if(k<255) k++: else k=0;
+	if(i<254) i++; else i=0;
+	if(j<254) j++; else j=0;
+	if(k<254) k++: else k=0;
 }
 
+void sine_funct_oth_2()
+{
+	OCR0A=data[i]; OCR0B=data[m]; //R phase
+	OCR1A=data[j]; OCR1B=data[n]; //S phase
+	OCR2A=data[k]; OCR2B=data[o]; //T phase
+	
+	if(i<254) i++; else i=0;
+	if(j<254) j++; else j=0;
+	if(k<254) k++: else k=0;
+	if(m<254) i++; else i=0;
+	if(n<254) j++; else j=0;
+	if(o<254) k++: else k=0;
+}
 void main()
 {
 	setup();
